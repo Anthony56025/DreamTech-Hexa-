@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Juego1</title>
+</head>
+<body>
+    <Div class="contenedor">
+        <h1>Juego: Piedra, Papel o Tijeras</h1>
+        <p>Elige una opción para jugar:</p>
+        <div class="botones">
+            <button onclick="jugar('piedra')">Piedra</button>
+            <button onclick="jugar('papel')">Papel</button>
+            <button onclick="jugar('tijeras')">Tijeras</button>
+            <a href="../../juegos.html"><button>Volver</button></a>
+        </div>
+
+        <div id="resultado" class="resultado">
+            <p>Haz tu elección para comenzar.</p>
+        </div>
+        
+    </Div>
+
+        <script>
+            function jugar(opcionUsuario) {
+                const opciones = ['piedra', 'papel', 'tijeras'];
+                const opcionComputadora = opciones[Math.floor(Math.random() * 3)];
+                let resultado;
+
+                if (opcionUsuario === opcionComputadora) {
+                    resultado = "¡Es un empate!";
+                } else if (
+                    (opcionUsuario === 'piedra' && opcionComputadora === 'tijeras') ||
+                    (opcionUsuario === 'papel' && opcionComputadora === 'piedra') ||
+                    (opcionUsuario === 'tijeras' && opcionComputadora === 'papel')
+                ) {
+                    resultado = "¡Ganaste!";
+                } else {
+                    resultado = "¡Perdiste!";
+                }
+
+                document.getElementById('resultado').innerHTML = `Elegiste: ${opcionUsuario} - Computadora eligió: ${opcionComputadora}. ${resultado}`;
+            }
+        </script>
+
+</body>
+</html>

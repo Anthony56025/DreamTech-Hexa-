@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>DreamTech Hexa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="link/css/styles.css" />
+</head>
+<body>
+  <header>
+    <img src="assets/iconos/Logo.jpeg" alt="Logo de la plataforma" class="logo-header">
+    <h1>DreamTech Hexa</h1>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="main-nav">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="juegos.html">Juegos</a></li>
+        <li><a href="otros.html">Herramientas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="banner">
+      <div class="banner-content">
+        <h2 class="titulo">¿Qué es esta plataforma?</h2>
+        <p class="descripcion">
+          Esta plataforma es un proyecto creado para la feria de ciencias de la Unidad Educativa Fiscal Quince de Octubre. Su objetivo es ofrecer un espacio digital donde se reúnen juegos educativos y recreativos que facilitan el aprendizaje de forma divertida e interactiva.
+        </p>
+        <p class="descripcion">
+          Con este sitio web, buscamos motivar a estudiantes de diferentes edades a aprender mediante juegos que refuerzan conocimientos básicos en áreas como matemáticas, ciencias y lógica. Además, la plataforma promueve el uso de la tecnología como herramienta para complementar la educación tradicional.
+        </p>
+        <button class="saber">
+          <a href="descripcion.html">Saber más</a>
+        </button>
+      </div>
+      <img class="logo-banner" src="assets/iconos/Logo.jpeg" alt="Logo de la plataforma">
+    </section>
+  </main>
+
+  <df-messenger
+    intent="WELCOME"
+    chat-title="DreamTechHexa"
+    agent-id="8780b7f3-40ce-49ad-a1f9-306350cba8ec"
+    language-code="es"
+    background-color="#FFF6E5"
+    font-color="#3E3E3E"
+    user-font-color="#A9746E"
+  ></df-messenger>
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+  <footer>
+    &copy; 2025 DreamTech Hexa. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    // MENÚ RESPONSIVE JS
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.getElementById('menu-toggle');
+      const nav = document.getElementById('main-nav');
+      toggle.addEventListener('click', function () {
+        nav.classList.toggle('open');
+        toggle.classList.toggle('open');
+        document.body.classList.toggle('menu-open');
+      });
+
+      // Cierra menú al hacer click fuera o en un enlace
+      nav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          nav.classList.remove('open');
+          toggle.classList.remove('open');
+          document.body.classList.remove('menu-open');
+        });
+      });
+      document.addEventListener('click', e => {
+        if (nav.classList.contains('open') && !nav.contains(e.target) && e.target !== toggle) {
+          nav.classList.remove('open');
+          toggle.classList.remove('open');
+          document.body.classList.remove('menu-open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

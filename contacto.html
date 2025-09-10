@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="link/css/styles.css" />
+  <link rel="stylesheet" href="link/css/contacto.css" />
+  <title>Contacto</title>
+</head>
+<body>
+
+  <header>
+    <img src="assets/iconos/Logo.jpeg" alt="Logo de la plataforma" class="logo-header" />
+    <h1>DreamTech Hexa</h1>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="main-nav">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="juegos.html">Juegos</a></li>
+        <li><a href="otros.html">Herramientas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contacto">
+      <h2>Contacto</h2>
+      <p>¡Gracias por visitar nuestra plataforma! Si tienes alguna pregunta, sugerencia o simplemente quieres ponerte en contacto con nosotros, no dudes en hacerlo. Estamos aquí para ayudarte.</p>
+
+      <!-- Mensaje de éxito -->
+      <div id="mensajeExito" class="mensaje-exito" style="display: none;">
+        ¡Gracias por tu mensaje! Te responderemos pronto.
+      </div>
+
+      <form action="https://formsubmit.co/marcilloanthonymiguel@gmail.com" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" required />
+
+        <label for="email">Correo electrónico:</label>
+        <input type="email" name="email" id="email" required />
+
+        <label for="motivo">Motivo:</label>
+        <select name="motivo" id="motivo" required>
+          <option value="sugerencia">Sugerencia</option>
+          <option value="reporte">Reporte de error</option>
+          <option value="consulta">Consulta</option>
+          <option value="otro">Otro</option>
+        </select>
+
+        <label for="mensaje">Mensaje:</label>
+        <textarea name="mensaje" id="mensaje" required></textarea>
+
+        <!-- Opciones ocultas de FormSubmit -->
+        <input type="hidden" name="_next" value="https://anthony56025.github.io/DreamTech-Hexa/contacto.html?enviado=true" />
+        <input type="hidden" name="_captcha" value="false" />
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 DreamTech Hexa. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    // MENÚ RESPONSIVE JS
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.getElementById('menu-toggle');
+      const nav = document.getElementById('main-nav');
+      toggle.addEventListener('click', function () {
+        nav.classList.toggle('open');
+        toggle.classList.toggle('open');
+        document.body.classList.toggle('menu-open');
+      });
+
+      // Cierra menú al hacer click fuera o en un enlace
+      nav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          nav.classList.remove('open');
+          toggle.classList.remove('open');
+          document.body.classList.remove('menu-open');
+        });
+      });
+      document.addEventListener('click', e => {
+        if (nav.classList.contains('open') && !nav.contains(e.target) && e.target !== toggle) {
+          nav.classList.remove('open');
+          toggle.classList.remove('open');
+          document.body.classList.remove('menu-open');
+        }
+      });
+
+      // Mostrar mensaje si ?enviado=true
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("enviado") === "true") {
+        document.getElementById("mensajeExito").style.display = "block";
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tarjetas Educativas Dinámicas</title>
+  <link rel="stylesheet" href="menu.css" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+  <header>
+    <img src="imagenes/logo.jpg" alt="Logo" class="logo-header">
+    <h1>Proyectos Interdisciplinarios</h1>
+    <nav id="main-nav">
+      <a href="index.html">Inicio</a>
+      <a href="proyecto.html">Proyectos</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+
+  <div class="container">
+    <!-- Tarjeta Principal 1 -->
+    <div class="main-row">
+      <div class="maincard card-blue">
+        <div>Proyectos Interdisciplinarios</div>
+        <button class="open-btn" data-target="subs-1">abrir</button>
+      </div>
+      <div class="subcards" id="subs-1">
+        <div class="subcard-row">
+          <div class="subcard card-orange">
+            <div>subtarjetas 1</div>
+            <button class="open-btn" data-target="finales-1-1">abrir</button>
+          </div>
+          <div class="final-cards" id="finales-1-1">
+            <div class="final-card card-green">tarjeta final 1
+                <button class="open-btn">abrir</button>
+            </div>
+            <div class="final-card card-violet">tarjeta final 2
+                <button class="open-btn">abrir</button>
+            </div>
+            <button class="close-btn" data-close="finales-1-1">cerrar</button>
+          </div>
+        </div>
+        <div class="subcard-row">
+          <div class="subcard card-orange">
+            <div>subtarjetas 2</div>
+            <button class="open-btn" data-target="finales-1-2">abrir</button>
+          </div>
+          <div class="final-cards" id="finales-1-2">
+            <div class="final-card card-green">tarjeta final 1
+                <button class="open-btn">abrir</button>
+            </div>
+            <div class="final-card card-violet">tarjeta final 2
+                <button class="open-btn">abrir</button>
+            </div>
+            <button class="close-btn" data-close="finales-1-2">cerrar</button>
+          </div>
+        </div>
+        <div class="subcard-row">
+          <div class="subcard card-orange">
+            <div>subtarjetas 3</div>
+            <button class="open-btn" data-target="finales-1-3">abrir</button>
+          </div>
+          <div class="final-cards" id="finales-1-3">
+            <div class="final-card card-green">tarjeta final 1
+                <button class="open-btn">abrir</button>
+            </div>
+            <div class="final-card card-violet">tarjeta final 2
+                <button class="open-btn">abrir</button>
+            </div>
+            <button class="close-btn" data-close="finales-1-3">cerrar</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <!-- Tarjeta Principal 2 -->
+    <div class="main-row">
+      <div class="maincard card-blue">
+        <div>Proyecto Modular</div>
+        <button class="open-btn" data-target="subs-2">abrir</button>
+      </div>
+      <div class="subcards" id="subs-2">
+        <div class="subcard-row">
+          <div class="subcard card-orange">
+            <div>subtarjetas 1</div>
+            <button class="open-btn" data-target="finales-2-1">abrir</button>
+          </div>
+          <div class="final-cards" id="finales-2-1">
+            <div class="final-card card-green">tarjeta final 1
+                <button class="open-btn">abrir</button>
+            </div>
+            <div class="final-card card-violet">tarjeta final 2
+                <button class="open-btn">abrir</button>
+            </div>
+            <button class="close-btn" data-close="finales-2-1">cerrar</button>
+          </div>
+        </div>
+        <div class="subcard-row">
+          <div class="subcard card-orange">
+            <div>subtarjetas 2</div>
+            <button class="open-btn" data-target="finales-2-2">abrir</button>
+          </div>
+          <div class="final-cards" id="finales-2-2">
+            <div class="final-card card-green">tarjeta final 1
+                <button class="open-btn">abrir</button>
+            </div>
+            <div class="final-card card-violet">tarjeta final 2
+                <button class="open-btn">abrir</button>
+            </div>
+            <button class="close-btn" data-close="finales-2-2">cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+    <footer>
+    &copy; 2025 Proyecto. Proyectos modular y area.
+  </footer>
+
+</body>
+
+  <script src="proyecto.js"></script>
+
+  <script>
+// Menú hamburguesa
+const menuToggle = document.getElementById('menu-toggle');
+const mainNav = document.getElementById('main-nav');
+menuToggle.addEventListener('click', () => {
+  mainNav.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+  document.body.classList.toggle('menu-open');
+});
+
+// Mostrar/ocultar las subtarjetas al hacer clic en el botón principal
+document.querySelectorAll('.abrir-btn[data-card]').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const cardNum = btn.getAttribute('data-card');
+    const subtarjetas = document.getElementById('subtarjetas' + cardNum);
+    if (subtarjetas) {
+      if (subtarjetas.style.display === 'none' || subtarjetas.style.display === '') {
+        subtarjetas.style.display = 'grid';
+        btn.textContent = 'Cerrar';
+      } else {
+        subtarjetas.style.display = 'none';
+        btn.textContent = 'Abrir';
+      }
+      
+    }
+  });
+});
+
+</script>
+</html>

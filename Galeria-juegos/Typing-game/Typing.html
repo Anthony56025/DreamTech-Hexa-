@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>typing game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>✍️ typing game</h1>
+
+    <div id="sentenceDisplay"></div>
+
+    <div class="buttons">
+      <button id="startButton">▶️ Iniciar Juego</button>
+      <a href="../../juegos.html"><button id="backButton">🔙 Volver</button></a>
+    </div>
+
+    <div class="stats">
+      <p>✅ Correctas: <span id="correct">0</span></p>
+      <p>❌ Errores: <span id="errors">0</span></p>
+      <p>🏆 Puntos: <span id="score">0</span></p>
+      <p>⏱️ Tiempo: <span id="time">0</span>s</p>
+    </div>
+
+    <p id="message" class="hidden">El juego está en pausa.</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

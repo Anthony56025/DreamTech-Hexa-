@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="adivinanza.css">
+    <title>Adivinanzas</title>
+</head>
+<body>
+    <div class="juego-contenedor">
+        <div id="juego-screen">
+            <h1>🎯 Adivinanzas</h1>
+            
+            <div class="progreso">
+                <span>Adivinanza <span id="numero-adivinanza">1</span>/10</span>
+                <span class="puntaje">Puntos: <span id="puntos-actuales">0</span>/100</span>
+            </div>
+            
+            <div class="intentos-restantes">Intentos restantes: <span id="intentos">5</span></div>
+            
+            <div class="adivinanza-texto" id="adivinanza-texto"></div>
+            <div class="pista-texto" id="pista-texto"></div>
+            
+            <div class="intento-contenedor">
+                <input type="text" id="respuesta" placeholder="Tu respuesta..." autocomplete="off">
+            </div>
+            
+            <button class="boton" id="boton-intentar" onclick="verificarIntento()">Comprobar</button>
+            <a href="../../juegos.html"><button class="boton">Regresar</button></a>
+            
+            <div id="resultado"></div>
+        </div>
+        
+        <div class="final-screen" id="final-screen">
+            <h1>🏆 ¡Juego Completado!</h1>
+            <div class="final-puntaje">Puntaje final: <span id="puntaje-final">0</span>/100</div>
+            <p id="mensaje-final"></p>
+            <button class="boton" onclick="reiniciarJuego()">Jugar de nuevo</button>
+            <a href="tarjeta.html"><button class="boton">Regresar</button></a>
+        </div>
+    </div>
+    <script src="adivinanza.js"></script>
+</body>
+</html>

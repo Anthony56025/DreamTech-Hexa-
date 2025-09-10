@@ -1,0 +1,18 @@
+body {
+    background:rgb(76, 68, 146);
+    color: white;
+    font-family: Arial, sans-serif;
+}
+.Volver {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 20px;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+.Volver a {
+  color: #333;
+  text-decoration: none;
+}

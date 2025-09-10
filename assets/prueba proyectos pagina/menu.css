@@ -1,0 +1,217 @@
+:root {
+  --verde-principal: #4CAF50;
+  --verde-claro: #A5D6A7;
+  --verde-oscuro: #2E7D32;
+  --fondo: #F9F9F6;
+  --texto: #222;
+  --blanco: #fff;
+  --sombra-suave: rgba(76, 175, 80, 0.2);
+
+  /* Colores suaves para tarjetas */
+  --tarjeta1-fondo: #f7f7f7;
+  --tarjeta1-borde: #cccccc;
+  --tarjeta2-fondo: #f8f4ee;
+  --tarjeta2-borde: #e0d8c9;
+  --tarjeta3-fondo: #f3faf7;
+  --tarjeta3-borde: #c7e3d5;
+  --tarjeta4-fondo: #f6f5fa;
+  --tarjeta4-borde: #cfc7e3;
+  --tarjeta5-fondo: #f4f7fa;
+  --tarjeta5-borde: #b7c7d9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+body {
+  font-family: Arial, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+/* HEADER y NAV */ 
+header {
+  background-color: var(--verde-principal);
+  color: var(--blanco);
+  padding: 18px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px var(--sombra-suave);
+  border-bottom: 2px solid var(--verde-claro);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.logo-header {
+  width: 70px;
+  height: 85px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px var(--verde-claro);
+  object-fit: cover;
+  background: var(--blanco);
+}
+h1 {
+  font-size: 40px;
+  color: var(--blanco);
+  font-family: Arial, sans-serif;
+  letter-spacing: 2px;
+  margin-left: 20px;
+  flex: 1;
+}
+nav#main-nav {
+  font-size: 20px;
+  display: flex;
+  gap: 20px;
+}
+nav#main-nav a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background: transparent;
+  border: 2px solid var(--verde-claro);
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+nav#main-nav a:hover,
+nav#main-nav a:focus {
+  background: var(--verde-claro);
+  color: var(--texto);
+  border: 2px solid var(--verde-principal);
+}
+
+/* MENÚ HAMBURGUESA RESPONSIVE */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  margin-left: 16px;
+  z-index: 50;
+}
+.menu-toggle span {
+  display: block;
+  height: 4px;
+  width: 28px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+@media (max-width: 900px) {
+  nav#main-nav {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    background: var(--verde-principal);
+    box-shadow: -2px 0 10px #0002;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 80px 30px 30px 30px;
+    gap: 28px;
+    transform: translateX(100%);
+    transition: transform 0.32s cubic-bezier(.77,0,.18,1);
+    min-width: 60vw;
+    z-index: 20;
+  }
+  nav#main-nav.open {
+    transform: translateX(0);
+  }
+  nav#main-nav a {
+    font-size: 1.3rem;
+    width: 100%;
+    border-radius: 18px;
+    padding: 16px 12px;
+    border: none;
+    background: rgba(255,255,255,0.10);
+    margin: 0 0 8px 0;
+    color: #fff;
+    text-align: left;
+  }
+  nav#main-nav a:hover {
+    background: var(--verde-claro);
+    color: var(--texto);
+  }
+  .menu-toggle {
+    display: flex;
+  }
+  header {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 900px) {
+  .tarjeta-zona {
+    flex-direction: column !important;
+    align-items: center !important;
+    min-height: 540px;
+    display: flex;
+  }
+  .subtarjetas-container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+    align-items: center;
+    margin-top: 0;
+  }
+  .subtarjeta {
+    width: 90vw;
+    max-width: 400px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .banner {
+    padding: 20px 5vw;
+    width: 90vw;
+    gap: 16px;
+  }
+  .logo-header {
+    width: 50px;
+    height: 60px;
+  }
+  .titulo {
+    font-size: 20px;
+  }
+  h1{
+    font-size: 15px;
+  }
+  .subtarjeta {
+    width: 90vw;
+    max-width: 400px;
+  }
+}
+footer {
+  background-color: var(--verde-claro);
+  color: var(--texto);
+  text-align: center;
+  padding: 12px 16px;
+  width: 100%;
+  border-top: 2px solid var(--verde-principal);
+  font-family: Arial, sans-serif;
+  letter-spacing: 1px;
+  font-size: 16px;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}

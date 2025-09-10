@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bloc.css">
+    <title>Pomodoro</title>
+</head>
+<body>
+
+    <button onclick="window.history.back()" class="boton-volver">
+        <svg viewBox="0 0 24 24"><path d="M15.5 5l-7 7 7 7"/></svg>
+        <a href="../../Otros.html">Volver</a>
+    </button>
+
+    <div id="main-container">
+        <div id="left-panel">
+            <div id="player-container">
+                <div id="cover-art">
+                    <img id="cover-img" src="../../assets/iconos/Play.png" alt="Carátula">
+                </div>
+                <!-- Agrupación horizontal de botón y icono -->
+                <div id="seleccion-musica-row">
+                    <label for="fileInput" class="label-fileInput">Selecciona tu música</label>
+                    <button id="abrirMenuMusica" class="icono-musica-btn" type="button" title="Elige una canción">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 17V5l12-2v12" stroke="#6F4E37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="6" cy="18" r="3" stroke="#6F4E37" stroke-width="2"/>
+                            <circle cx="18" cy="16" r="3" stroke="#6F4E37" stroke-width="2"/>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Modal para seleccionar canción -->
+                <div id="modalMusica" class="modal-musica">
+                  <div class="modal-musica-contenido grande">
+                    <h3>Selecciona una canción</h3>
+                    <div class="lista-musicas">
+                        <div class="opcion-musica" data-src="../../assets/musica/igual-que-un-ánge.mp3">
+                            <img src="../../assets/musica-logos/igual-que-un-ánge.jpg" alt="cancion 1">
+                            <span>igual que un ángel</span>
+                        </div>
+                        <div class="opcion-musica" data-src="../../assets/musica/snowman.mp3">
+                            <img src="../../assets/musica-logos/snowman.jpg" alt="cancion 2">
+                            <span>snowman</span>
+                        </div>
+                        <div class="opcion-musica" data-src="../../assets/musica/World's-Smallest-Violin.mp3">
+                            <img src="../../assets/musica-logos/World's-Smallest-Violin.jpg" alt="Canción 3">
+                            <span>World's Smallest Violin</span>
+                        </div>
+                        <div class="opcion-musica" data-src="../../assets/musica/over-the-Rainbow.mp3">
+                            <img src="../../assets/musica-logos/over-the-Rainbow.jpg" alt="Canción 4">
+                            <span>over the Rainbow</span>
+                        </div>
+                        <div class="opcion-musica" data-src="../../assets/musica/Lo-malo-de-ser-bueno.mp3">
+                            <img src="../../assets/musica-logos/Lo-malo-de-ser-bueno.jpg" alt="Canción 5">
+                            <span>Lo malo de ser bueno</span>
+                        </div>
+                        <div class="opcion-musica" data-src="../../assets/musica/Hoy-Estoy-Raro.mp3">
+                            <img src="../../assets/musica-logos/Hoy-Estoy-Raro.jpg" alt="Canción 6">
+                            <span>Hoy Estoy Raro</span>
+                        </div>
+                        <div class="opcion-musica" data-src="../../assets/musica/ya-no-sé-qué-hacer-conmigo.mp3">
+                            <img src="../../assets/musica-logos/cuarteto-de-nos.jpeg" alt="Canción 7">
+                            <span>Ya no sé qué hacer conmigo</span>
+                        </div>
+                        <div class="opcion-musica" data-src="../../assets/musica/Enamorado-tuyo.mp3">
+                            <img src="../../assets/musica-logos/Lo-malo-de-ser-bueno.jpg" alt="Canción 8">
+                            <span>Enamorado tuyo</span>
+                        </div>
+                    </div>
+                    <button id="cerrarModalMusica" class="label-fileInput" style="margin-top:18px;">Cerrar</button>
+                  </div>
+                </div>
+                <input type="file" id="fileInput" accept="audio/*">
+                <div id="music-controls">
+                    <button id="playBtn" title="Reproducir/Pausar">&#9658;</button>
+                    <button id="stopBtn" title="Detener">&#9632;</button>
+                </div>
+                <audio id="audioPlayer" controls style="width:100%; margin-top:18px; height:48px;"></audio>
+            </div>
+            <div id="pomodoro-section">
+                <div id="pomodoro-header">
+                    <span id="pomodoro-timer">25:00</span>
+                    <button id="pomodoro-settings-btn" title="Configurar Pomodoro">&#9881;</button>
+                </div>
+                <div id="pomodoro-config" style="display:none;">
+                    <label for="pomodoro-trabajo">Trabajo:</label>
+                    <select id="pomodoro-trabajo">
+                        <option value="10">10 min</option>
+                        <option value="15">15 min</option>
+                        <option value="20">20 min</option>
+                        <option value="25" selected>25 min</option>
+                        <option value="30">30 min</option>
+                        <option value="35">35 min</option>
+                        <option value="40">40 min</option>
+                    </select>
+                    <label for="pomodoro-descanso">Descanso:</label>
+                    <select id="pomodoro-descanso">
+                        <option value="3">3 min</option>
+                        <option value="5" selected>5 min</option>
+                        <option value="10">10 min</option>
+                        <option value="15">15 min</option>
+                    </select>
+                    <button id="pomodoro-aplicar">Aplicar</button>
+                </div>
+                <div id="pomodoro-controles">
+                    <button id="iniciarPomodoro">Iniciar</button>
+                    <button id="pausarPomodoro">Pausar</button>
+                    <button id="reiniciarPomodoro">Reiniciar</button>
+                </div>
+                <div id="pomodoro-estado">Trabajando</div>
+            </div>
+        </div>
+        <div id="right-panel">
+            <h1>Bloc de Notas</h1>
+            <div id="notas-section">
+                <textarea id="notaInput" placeholder="Escribe tu tarea aquí..."></textarea>
+                <button class="agregar" onclick="agregarNota()">Agregar Nota</button>
+                <div id="contadorNotas">Tareas: 0</div>
+                <ul id="listaNotas"></ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Modal de selección de música
+        const audio = document.getElementById('audioPlayer');
+        const playBtn = document.getElementById('playBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const modalMusica = document.getElementById('modalMusica');
+        const abrirMenuMusica = document.getElementById('abrirMenuMusica');
+        const cerrarModalMusica = document.getElementById('cerrarModalMusica');
+
+        abrirMenuMusica.onclick = function() {
+          modalMusica.classList.add('activo');
+        };
+        cerrarModalMusica.onclick = function() {
+          modalMusica.classList.remove('activo');
+        };
+
+        // Selección visual de música
+        document.querySelectorAll('.opcion-musica').forEach(el => {
+            el.onclick = function() {
+                modalMusica.classList.remove('activo');
+                const src = el.getAttribute('data-src');
+                audio.src = src;
+                audio.load();
+                audio.play();
+                // Opcional: marcar seleccionada
+                document.querySelectorAll('.opcion-musica').forEach(e => e.classList.remove('seleccionada'));
+                el.classList.add('seleccionada');
+            };
+        });
+
+        // Reproductor de música
+        playBtn.onclick = function() {
+            if (audio.src) {
+                if (audio.paused) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
+            }
+        };
+        stopBtn.onclick = function() {
+            if (audio.src) {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+        };
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                audio.src = URL.createObjectURL(file);
+                audio.load();
+                audio.play();
+            }
+        });
+        audio.addEventListener('play', () => {
+            playBtn.innerHTML = "&#10073;&#10073;";
+        });
+        audio.addEventListener('pause', () => {
+            playBtn.innerHTML = "&#9658;";
+        });
+        audio.addEventListener('ended', () => {
+            playBtn.innerHTML = "&#9658;";
+        });
+
+        // Bloc de notas
+        function agregarNota() {
+            const input = document.getElementById('notaInput');
+            const texto = input.value.trim();
+            if (texto) {
+                const li = document.createElement('li');
+                li.textContent = texto;
+
+                li.onclick = function() {
+                    li.classList.toggle('completada');
+                };
+
+                const btnEliminar = document.createElement('button');
+                btnEliminar.textContent = 'Eliminar';
+                btnEliminar.onclick = function(e) {
+                    e.stopPropagation();
+                    li.remove();
+                    actualizarContador();
+                };
+
+                li.appendChild(btnEliminar);
+                document.getElementById('listaNotas').appendChild(li);
+                input.value = '';
+                actualizarContador();
+            }
+        }
+
+        function actualizarContador() {
+            const total = document.querySelectorAll('#listaNotas li').length;
+            const contador = document.getElementById('contadorNotas');
+            if (contador) {
+                contador.textContent = `Tareas: ${total}`;
+            }
+        }
+
+        // Pomodoro
+        let pomodoroInterval = null;
+        let pomodoroTrabajo = 25;
+        let pomodoroDescanso = 5;
+        let pomodoroTiempo = pomodoroTrabajo * 60;
+        let pomodoroEnTrabajo = true;
+        let pomodoroActivo = false;
+
+        function actualizarPomodoro() {
+            const minutos = String(Math.floor(pomodoroTiempo / 60)).padStart(2, '0');
+            const segundos = String(pomodoroTiempo % 60).padStart(2, '0');
+            document.getElementById('pomodoro-timer').textContent = `${minutos}:${segundos}`;
+            document.getElementById('pomodoro-estado').textContent = pomodoroEnTrabajo ? 'Trabajando' : 'Descansando';
+        }
+
+        function iniciarPomodoro() {
+            if (!pomodoroActivo) {
+                pomodoroActivo = true;
+                pomodoroInterval = setInterval(() => {
+                    if (pomodoroTiempo > 0) {
+                        pomodoroTiempo--;
+                        actualizarPomodoro();
+                    } else {
+                        clearInterval(pomodoroInterval);
+                        pomodoroActivo = false;
+                        if (pomodoroEnTrabajo) {
+                            pomodoroTiempo = pomodoroDescanso * 60;
+                            pomodoroEnTrabajo = false;
+                        } else {
+                            pomodoroTiempo = pomodoroTrabajo * 60;
+                            pomodoroEnTrabajo = true;
+                        }
+                        actualizarPomodoro();
+                    }
+                }, 1000);
+            }
+        }
+
+        function pausarPomodoro() {
+            pomodoroActivo = false;
+            clearInterval(pomodoroInterval);
+        }
+
+        function reiniciarPomodoro() {
+            pomodoroActivo = false;
+            clearInterval(pomodoroInterval);
+            pomodoroEnTrabajo = true;
+            pomodoroTiempo = pomodoroTrabajo * 60;
+            actualizarPomodoro();
+        }
+
+        document.getElementById('iniciarPomodoro').onclick = iniciarPomodoro;
+        document.getElementById('pausarPomodoro').onclick = pausarPomodoro;
+        document.getElementById('reiniciarPomodoro').onclick = reiniciarPomodoro;
+
+        document.getElementById('pomodoro-settings-btn').onclick = function() {
+            const config = document.getElementById('pomodoro-config');
+            config.style.display = config.style.display === 'none' ? 'flex' : 'none';
+        };
+
+        document.getElementById('pomodoro-aplicar').onclick = function() {
+            const trabajo = parseInt(document.getElementById('pomodoro-trabajo').value, 10);
+            const descanso = parseInt(document.getElementById('pomodoro-descanso').value, 10);
+            if (trabajo > 0 && descanso > 0) {
+                pomodoroTrabajo = trabajo;
+                pomodoroDescanso = descanso;
+                reiniciarPomodoro();
+            }
+            document.getElementById('pomodoro-config').style.display = 'none';
+        };
+
+        actualizarPomodoro();
+        actualizarContador();
+    </script>
+</body>
+</html>
